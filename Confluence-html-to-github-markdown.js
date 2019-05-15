@@ -45,6 +45,8 @@ function dive(dir) {
           mkdirpSync("/Markdown")
 //          console.log("Making Markdown")
           var outputFile = "Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
+		  outputFile = outputFile.replace(/[\/]/g, "-");
+		  outputFile = "Markdown/" + outputFile;
           var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + JSON.stringify(path.replace(/ /g, "\ ")), {cwd: process.cwd()})
           console.log(out)
             //images
